@@ -6,12 +6,12 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-locale                   : "en-US"
-title                    : "David Watkins / Ph.D. Candidate"
+locale                   : "en-GB"
+title                    : "Francesco Rentocchini"
 title_separator          : "-"
-name                     : &name "David Watkins"
-description              : &description "Researcher at Columbia University in the Columbia Robotics Lab"
-url                      : https://frarent.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
+name                     : &name "Francesco Rentocchini"
+description              : &description "Economic analyst at European Commission, JRC Seville and Associate Professor of Business Economics at the University of Milan"
+url                      : https://frarent.github.io
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "frarent/frarent.github.io"
 teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
@@ -55,11 +55,11 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : "davidjwatkinsv"
-facebook:
-  username               : "davidwatkinsvalls"
-  app_id                 :
-  publisher              :
+  username               : "fix_frarent"
+#facebook:
+#  username               : "davidwatkinsvalls"
+#  app_id                 :
+#  publisher              :
 og_image                 :  # Open Graph/Twitter default site image
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
