@@ -1,6 +1,7 @@
 ---
 permalink: /
-title: "#Francesco Rentocchini# - ##Economic Analyst and Associate Professor##"
+title: "Francesco Rentocchini 
+Economic Analyst and Associate Professor"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
