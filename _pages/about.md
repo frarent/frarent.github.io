@@ -10,8 +10,7 @@ redirect_from:
 
 
 
-Francesco Rentocchini is Economic Analyst at the [European Commission Joint Research Centre (JRC)](https://iri.jrc.ec.europa.eu/home/)
-and Associate Professor in Business Economics and Innovation at the [Department of Economics,
+Francesco Rentocchini is Economic Analyst at the <a href="https://iri.jrc.ec.europa.eu/home/" target="_blank">European Commission Joint Research Centre (JRC)</a> and Associate Professor in Business Economics and Innovation at the [Department of Economics,
 Management and Quantitative Methods at the University of Milan (IT)](https://eng.demm.unimi.it/ecm/home). He was previously Associate Professor in Strategy and Innovation at the [University of Southampton (UK)](https://www.southampton.ac.uk/).
 
 He has an established research record in innovation studies. His main area of research relates to bi-directional flows between the generation of knowledge know-how and the development of technological innovation. His research interests include innovation in high-tech industries,
