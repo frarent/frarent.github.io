@@ -8,7 +8,7 @@ title: Francesco Rentocchini
 #baseurl: "" # the subpath of your site, e.g. /blog/
 
 url: "https://frarent.github.io" # the base hostname & protocol for your site
-repository: "frarent.github.io"
+repository: "frarent/frarent.github.io"
 #github_username: elizabethmcd
 #twitter_username: lizilla93
 # feel free to add other links here; you will have to add the SVG icon in _layouts/footer.html
