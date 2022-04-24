@@ -5,8 +5,8 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if author.googlescholar %}
-  You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
+{% if 2cH43vsAAAAJ %}
+  You can also find my articles on <u><a href="{{2cH43vsAAAAJ}}">my Google Scholar profile</a>.</u>
 {% endif %}
 
 {% include base_path %}
