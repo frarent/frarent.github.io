@@ -78,13 +78,13 @@ analytics:
 
 # Site Author
 author:
-  name             : "David J. Watkins-Valls"
+  name             : "Francesco Rentocchini"
   avatar           : "profile.jpg"
-  bio              : "Ph.D. Researcher at the Columbia University Robotics Lab"
-  location         : "New York, NY"
-  employer         : "Columbia University"
-  googlescholar    : "https://scholar.google.com/citations?hl=en&user=2S7jVrMAAAAJ"
-  email            : "davidwatkins@cs.columbia.edu"
+  bio              : "Economic Analyst at European Commmission, JRC-Seville and Associate Professor at University of Milan"
+  location         : "Seville, Spain"
+  employer         : "European Commission, JRC Seville"
+  googlescholar    : "https://scholar.google.com/citations?user=2cH43vsAAAAJ&hl=en"
+  email            : "frarent@gmail.com"
   uri              :
   bitbucket        :
   codepen          :
@@ -92,25 +92,25 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "davidwatkins"
+  github           : "frarent"
   google_plus      :
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         : davidwatkinsvalls
-  orcid            : # "http://orcid.org/0000-0003-0786-5798"
+  linkedin         : francescorentocchini
+  orcid            : https://orcid.org/0000-0002-6414-0577
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "davidjwatkinsv"
+  twitter          : "fix_frarent"
   vine             :
   weibo            :
   xing             :
   youtube          :
   wikipedia        :
-  arxiv            : "https://arxiv.org/find/cs/1/au:+Watkins_Valls_D/0/1/0/all/0/1"
+  arxiv            : # "https://arxiv.org/find/cs/1/au:+Watkins_Valls_D/0/1/0/all/0/1"
 
 
 # Reading Files
