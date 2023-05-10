@@ -48,7 +48,7 @@ atom_feed:
   path                   : # blank (default) uses feed.xml
 
 # SEO Related
-google_site_verification : <meta name="google-site-verification" content="QR55eFT4DyXHzA7UBFapDabREqf0lK98umn9v_qZ_yI" />
+google_site_verification : "<meta name="google-site-verification" content="QR55eFT4DyXHzA7UBFapDabREqf0lK98umn9v_qZ_yI" />"
 bing_site_verification   :
 alexa_site_verification  :
 yandex_site_verification :
@@ -97,8 +97,8 @@ author:
   keybase          :
   instagram        :
   lastfm           :
-  linkedin         : francescorentocchini
-  orcid            : https://orcid.org/0000-0002-6414-0577
+  linkedin         : "francescorentocchini"
+  orcid            : "https://orcid.org/0000-0002-6414-0577"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
