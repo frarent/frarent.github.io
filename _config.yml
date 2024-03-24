@@ -244,7 +244,7 @@ defaults:
     values:
       layout: talk
       author_profile: false
-      share: true
+      share: false
   # _research
   - scope:
       path: ""
