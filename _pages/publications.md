@@ -22,7 +22,7 @@ description: "Selected publications, working papers and current work by Francesc
 </ul>
 
 {% comment %} Working papers: curated in _data/publications.yml. Current work: generated weekly from the
-drafts in the project repositories (scripts/current_work_sources.json -> _data/current_work.json). {% endcomment %}
+drafts in the project repositories (the local config -> _data/current_work.json). {% endcomment %}
 
 ## Working papers
 

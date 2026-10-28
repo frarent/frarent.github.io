@@ -2,7 +2,7 @@
 # Curated lists for the Publications page (edit by hand).
 #   selected       : the most relevant refereed articles, shown first
 #   working_papers : papers under review / R&R (papers in preparation come from the project
-#                    drafts: scripts/current_work_sources.json -> _data/current_work.json)
+#                    drafts: the local config -> _data/current_work.json)
 # The weekly update (scripts/update_site.py) checks OpenAlex and flags new articles and
 # working papers that look published in UPDATE_REPORT.md.
 # The `doi` field (bare, no https://doi.org/) is also how the update script

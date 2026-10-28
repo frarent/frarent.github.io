@@ -6,3 +6,4 @@ vendor/
 Gemfile.lock
 UPDATE_REPORT.md
 .DS_Store
+__pycache__/

@@ -28,6 +28,10 @@ scripts/preview.sh               # local preview at http://127.0.0.1:4000
 scripts/publish.sh               # shows the changes, asks for confirmation, commits and pushes
 ```
 
+Without a terminal (for example from a chat bot), `scripts/site_action.py` does the same steps
+non-interactively: `status`, `add <OpenAlex id>` (adds an article to Selected publications and
+removes it from Working papers if listed there), `publish` and `discard`.
+
 `update_site.py` does three things:
 
 1. **Publications check.** Queries the [OpenAlex](https://openalex.org/) API by author ID and reports
@@ -36,11 +40,16 @@ scripts/publish.sh               # shows the changes, asks for confirmation, com
 3. **Current work.** Reads the title and authors of the newest paper draft in each selected project
    folder.
 
+With `--weekly` it also sends a notification when there is something to approve or decide: a new
+CV, changed current work, a new article, a working paper that looks published, or a new draft.
+The notification goes to a Telegram bot if one is configured (a summary plus `UPDATE_REPORT.md`
+as an attachment), otherwise to the macOS notification centre.
+
 All personal settings (author IDs, CV location, project folders and which projects to include) live
 in a local config file outside the repository: `~/.config/site-update/config.json`, or the path in
 `$SITE_UPDATE_CONFIG`. `scripts/config.example.json` documents its structure. The script can be
 scheduled (cron, launchd or similar). It only updates the working copy and never commits or pushes,
-so every change is previewed before it goes online.
+so every change is approved before it goes online.
 
 ## Requirements
 
