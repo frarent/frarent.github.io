@@ -1,330 +1,66 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your entire site, values
-# which you are expected to set up once and rarely need to edit after that.
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# `jekyll serve`. If you change this file, please restart the server process.
+# =============================================================================
+# Site configuration — frarent.github.io
+# Built by GitHub Pages (Jekyll). Preview locally with scripts/preview.sh.
+# Restart the preview after editing this file: it is not reloaded live.
+# =============================================================================
 
-# Site Settings
-locale                   : "en-GB"
-title                    : "Francesco Rentocchini"
-title_separator          : "-"
-name                     : &name "Francesco Rentocchini"
-description              : &description "Economic analyst at European Commission, JRC Seville and Associate Professor of Business Economics at the University of Milan"
-url                      : https://frarent.github.io
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "frarent/frarent.github.io"
-teaser                   :  # filename of teaser fallback teaser image placed in /images/, .e.g. "500x300.png"
-breadcrumbs              : false # true, false (default)
-words_per_minute         : 160
-read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
-comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
-  disqus:
-    shortname            :
-  discourse:
-    server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
-  facebook:
-    appid                :
-    num_posts            : # 5 (default)
-    colorscheme          : # "light" (default), "dark"
-staticman:
-  allowedFields          : ['name', 'email', 'url', 'message']
-  branch                 : "gh-pages" # "master", "gh-pages"
-  commitMessage          : "New comment."
-  filename               : comment-{@timestamp}
-  format                 : "yml"
-  moderation             : true
-  path                   : "_data/comments/{options.slug}"
-  requiredFields         : ['name', 'email', 'message']
-  transforms:
-    email                : "md5"
-  generatedFields:
-    date:
-      type               : "date"
-      options:
-        format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
-atom_feed:
-  path                   : # blank (default) uses feed.xml
+# 1. Site identity ------------------------------------------------------------
+title       : "Francesco Rentocchini"
+description : "Economist working on the economics of innovation and science, industrial organisation, innovation policy and entrepreneurship. University of Ferrara."
+url         : "https://frarent.github.io"
+baseurl     : ""
+locale      : "en_GB"
+lang        : "en"
+timezone    : "Europe/Rome"
 
-# SEO Related
-google_site_verification: "QR55eFT4DyXHzA7UBFapDabREqf0lK98umn9v_qZ_yI"
-bing_site_verification   :
-alexa_site_verification  :
-yandex_site_verification :
-
-# Social Sharing
-twitter:
-  username               : "fix_frarent"
-#facebook:
-#  username               : 
-#  app_id                 :
-#  publisher              :
-og_image                 :  # Open Graph/Twitter default site image
-# For specifying social profiles
-# - https://developers.google.com/structured-data/customize/social-profiles
-social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
-
-
-# Analytics
-analytics:
-  provider               :  "google-universal" # false (default), "google", "google-universal", "custom"
-  google:
-    tracking_id          : "G-YR27Z2XSLL" 
-
-
-# Site Author
+# 2. Author / sidebar profile -------------------------------------------------
 author:
-  name             : "Francesco Rentocchini"
-  avatar           : "photo passport.jpg"
-  bio              : "Economic Analyst at European Commmission, JRC-Seville and Associate Professor at University of Milan"
-  location         : "Seville, Spain"
-  employer         : "European Commission, JRC Seville"
-  googlescholar    : https://scholar.google.com/citations?user=2cH43vsAAAAJ&hl=en
-  email            : "frarent@gmail.com"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "frarent"
-  google_plus      :
-  keybase          :
-  instagram        :
-  lastfm           :
-  linkedin         : "francescorentocchini"
-  orcid            : https://orcid.org/0000-0002-6414-0577
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : "fix_frarent"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
-  arxiv            : # "https://arxiv.org/find/cs/1/au:+Watkins_Valls_D/0/1/0/all/0/1"
+  name        : "Francesco Rentocchini"
+  avatar      : "/images/francesco-rentocchini.jpg"
+  tagline     : "Economics of innovation & science"
+  affiliation : "University of Ferrara"
+  location    : "Ferrara, Italy"
+  email       : "francesco.rentocchini@unife.it"
 
+# Profile links shown in the sidebar (order kept as written).
+links:
+  - name: "Google Scholar"
+    url : "https://scholar.google.com/citations?user=2cH43vsAAAAJ&hl=en"
+  - name: "ORCID"
+    url : "https://orcid.org/0000-0002-6414-0577"
+  - name: "IDEAS/RePEc"
+    url : "https://ideas.repec.org/e/pre185.html"
+  - name: "LinkedIn"
+    url : "https://www.linkedin.com/in/francescorentocchini"
+  - name: "GitHub"
+    url : "https://github.com/frarent"
 
-# Reading Files
-include:
-  - .htaccess
-  - _pages
-  - files
-exclude:
-  - "*.sublime-project"
-  - "*.sublime-workspace"
-  - .asset-cache
-  - .bundle
-  - .jekyll-assets-cache
-  - .sass-cache
-  - assets/js/plugins
-  - assets/js/_main.js
-  - assets/js/vendor
-  - Capfile
-  - CHANGELOG
-  - config
-  - Gemfile
-  - Gruntfile.js
-  - gulpfile.js
-  - LICENSE
-  - log
-  - node_modules
-  - package.json
-  - Rakefile
-  - README
-  - tmp
-keep_files:
-  - .git
-  - .svn
-encoding: "utf-8"
-markdown_ext: "markdown,mkdown,mkdn,mkd,md"
+# 3. Search engines -----------------------------------------------------------
+google_site_verification: "QR55eFT4DyXHzA7UBFapDabREqf0lK98umn9v_qZ_yI"
 
-
-# Conversion
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
-
-
-# Markdown Processing
+# 4. Build --------------------------------------------------------------------
+markdown    : kramdown
 kramdown:
-  input: GFM
-  hard_wrap: false
-  auto_ids: true
-  footnote_nr: 1
-  entity_output: as_char
-  toc_levels: 1..6
+  input       : GFM
   smart_quotes: lsquo,rsquo,ldquo,rdquo
-  enable_coderay: false
+permalink   : pretty
 
-
-# Collections
-collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
-  publications:
-    output: true
-    permalink: /:collection/:path/
-  portfolio:
-    output: true
-    permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
-  research:
-    output: true
-    permalink: /:collection/:path/
-  work:
-    output: true
-    permalink: /:collection/:path/
-
-
-# Defaults
-defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: true
-      share: true
-      related: true
-  # _pages
-  - scope:
-      path: ""
-      type: pages
-    values:
-      layout: single
-      author_profile: true
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _publications
-  - scope:
-      path: ""
-      type: publications
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _portfolio
-  - scope:
-      path: ""
-      type: portfolio
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: false
-      share: false
-  # _research
-  - scope:
-      path: ""
-      type: research
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-  # _work
-  - scope:
-      path: ""
-      type: work
-    values:
-      layout: single
-      author_profile: true
-      share: true
-      comments: true
-
-# Sass/SCSS
-sass:
-  sass_dir: _sass
-  style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-
-
-# Outputting
-permalink: /:categories/:title/
-# paginate: 5 # amount of posts to show
-# paginate_path: /page:num/
-timezone: America/New_York # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-
-
-# Plugins
-gems:
-  - jekyll-paginate
-#  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
+plugins:
   - jekyll-redirect-from
-# mimic GitHub Pages with --safe
-whitelist:
-  - jekyll-paginate
-#  - jekyll-sitemap
-  - jekyll-gist
-  - jekyll-feed
-  - jemoji
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
+include:
+  - _pages
+exclude:
+  - scripts
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - LICENSE
+  - UPDATE_REPORT.md
 
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path/my-awesome-category/index.html ~> path: /
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
-
-
-# HTML Compression
-# - http://jch.penibelst.de/
-compress_html:
-  clippings: all
-  ignore:
-    envs: development
+defaults:
+  - scope: { path: "" }
+    values: { layout: "default" }

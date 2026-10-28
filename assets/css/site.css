@@ -1,0 +1,97 @@
+/* =============================================================================
+   frarent.github.io — dark, low-footprint stylesheet
+   Near-black backgrounds draw least power on OLED screens; system fonts mean
+   no font downloads; no JavaScript anywhere on the site.
+   ========================================================================== */
+
+/* 1. Colour tokens -------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+  --bg:        #0b0d10;   /* page background (near black) */
+  --surface:   #12161b;   /* cards, header */
+  --border:    #232a32;
+  --text:      #d9dde2;
+  --muted:     #98a1ab;
+  --accent:    #86c9a9;   /* sage green: links, highlights */
+  --accent-2:  #b5dcc8;   /* link hover */
+  --badge:     #1a2a23;
+}
+
+/* 2. Base ----------------------------------------------------------------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 17px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover, a:focus-visible { color: var(--accent-2); text-decoration: underline; }
+h1, h2, h3 { line-height: 1.25; color: #f1f3f5; font-weight: 650; }
+h1 { font-size: 1.85rem; margin: 0 0 1.25rem; }
+h2 { font-size: 1.3rem; margin: 2.4rem 0 .9rem; padding-bottom: .35rem; border-bottom: 1px solid var(--border); }
+h3 { font-size: 1.05rem; margin: 1.6rem 0 .5rem; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+p { margin: 0 0 1rem; }
+strong { color: #f1f3f5; }
+em { color: #e6e9ec; }
+
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+/* 3. Header --------------------------------------------------------------- */
+.masthead { background: var(--surface); border-bottom: 1px solid var(--border); }
+.masthead__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-top: .85rem; padding-bottom: .85rem; }
+.masthead__name { color: #f1f3f5; font-weight: 700; font-size: 1.1rem; letter-spacing: .01em; }
+.masthead__nav { display: flex; gap: 1.25rem; }
+.masthead__nav a { color: var(--muted); font-weight: 500; }
+.masthead__nav a[aria-current="page"], .masthead__nav a:hover { color: var(--accent); text-decoration: none; }
+
+/* 4. Two-column layout ---------------------------------------------------- */
+.layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 3rem; padding-top: 2.5rem; padding-bottom: 3rem; }
+.profile { font-size: .92rem; position: sticky; top: 1.5rem; align-self: start; }
+.profile__photo { width: 176px; height: auto; border-radius: 10px; border: 1px solid var(--border); filter: brightness(.92); display: block; margin-bottom: 1rem; }
+.profile__name { font-weight: 700; font-size: 1.05rem; color: #f1f3f5; margin-bottom: .25rem; }
+.profile__meta { color: var(--muted); margin-bottom: .6rem; overflow-wrap: anywhere; }
+.profile__links { list-style: none; padding: 0; margin: 1rem 0 0; }
+.profile__links li { margin: .2rem 0; }
+
+@media (max-width: 760px) {
+  .layout { grid-template-columns: 1fr; gap: 1.5rem; padding-top: 1.5rem; }
+  .profile { position: static; display: grid; grid-template-columns: 96px 1fr; gap: 0 1rem; }
+  .profile__photo { width: 96px; grid-row: span 3; margin: 0; }
+  .profile__links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+}
+
+/* 5. Positions list (About page) ----------------------------------------- */
+.positions { list-style: none; padding: 0; margin: 0; }
+.positions li { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1rem; padding: .55rem 0; border-bottom: 1px solid var(--border); }
+.positions li:last-child { border-bottom: 0; }
+.positions .dates { color: var(--muted); font-variant-numeric: tabular-nums; font-size: .92rem; padding-top: .1rem; }
+.positions .role { color: #f1f3f5; font-weight: 600; display: block; }
+.positions .org { color: var(--muted); font-size: .94rem; }
+@media (max-width: 520px) { .positions li { grid-template-columns: 1fr; gap: 0; } }
+
+/* 6. Publication lists ---------------------------------------------------- */
+.pubs { list-style: none; padding: 0; margin: 0; }
+.pubs li { padding: .7rem 0; border-bottom: 1px solid var(--border); }
+.pubs li:last-child { border-bottom: 0; }
+.pub__title { color: #f1f3f5; font-weight: 600; }
+.pub__authors, .pub__venue { color: var(--muted); font-size: .95rem; }
+.pub__venue em { color: var(--text); }
+.badge { display: inline-block; font-size: .78rem; padding: .05rem .5rem; border-radius: 999px; background: var(--badge); color: var(--accent); margin-left: .35rem; white-space: nowrap; }
+.year-head { color: var(--muted); font-weight: 700; margin: 1.4rem 0 .2rem; font-variant-numeric: tabular-nums; }
+.note { color: var(--muted); font-size: .9rem; }
+.stats { display: flex; flex-wrap: wrap; gap: .75rem; margin: 0 0 1.5rem; }
+.stat { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: .55rem .9rem; }
+.stat b { display: block; font-size: 1.25rem; color: #f1f3f5; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: .85rem; }
+details { margin-top: 1rem; }
+summary { cursor: pointer; color: var(--accent); font-weight: 600; }
+
+/* 7. CV page -------------------------------------------------------------- */
+.button { display: inline-block; padding: .55rem 1.1rem; border-radius: 8px; background: var(--badge); border: 1px solid #2c4a3c; color: var(--accent); font-weight: 600; }
+.button:hover { text-decoration: none; background: #20352b; }
+.cv-frame { width: 100%; height: 80vh; min-height: 520px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); margin-top: 1.25rem; }
+
+/* 8. Footer --------------------------------------------------------------- */
+.footer { border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; padding: 1.25rem 0 2rem; }

@@ -1,22 +1,8 @@
-# main links links
+# Top navigation links
 main:
+  - title: "About"
+    url: /
   - title: "Publications"
     url: /publications/
-
-  #- title: "Talks"
-  #  url: /talks/    
-
- # - title: "Teaching"
- #   url: /teaching/    
-    
- # - title: "Portfolio"
- #   url: /portfolio/
-        
- # - title: "Blog Posts"
- #   url: /year-archive/
-    
   - title: "CV"
-    url: https://www.dropbox.com/s/edjk0y427utyeue/CV.pdf?dl=0
-    
- # - title: "Guide"
- #   url: /markdown/
+    url: /cv/
