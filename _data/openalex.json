@@ -1,6 +1,6 @@
 {
  "updated": "2026-10-28",
- "source": "OpenAlex author IDs A5032444931, A5104993311, A5123236675, A5150261484, A5064921137 + misattributed works",
+ "source": "OpenAlex",
  "metrics": {
   "works": 101,
   "n_articles": 36,
