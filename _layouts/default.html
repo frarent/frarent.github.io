@@ -1,30 +1,50 @@
----
-layout: compress
----
-
-
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
-  <head>
-    {% include head.html %}
-    {% include head/custom.html %}
-  </head>
-
-  <body>
-
-    {% include browser-upgrade.html %}
-    {% include masthead.html %}
-
-    {{ content }}
-
-    <div class="page__footer">
-      <footer>
-        {% include footer/custom.html %}
-        {% include footer.html %}
-      </footer>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#0b0d10">
+  {% seo %}
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+  <link rel="icon" href="{{ '/favicon.svg' | relative_url }}" type="image/svg+xml">
+</head>
+<body>
+  <header class="masthead">
+    <div class="wrap masthead__inner">
+      <a class="masthead__name" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+      <nav class="masthead__nav" aria-label="Main">
+        {% for link in site.data.navigation.main %}
+          {% assign active = false %}
+          {% if page.url == link.url %}{% assign active = true %}{% endif %}
+          <a href="{{ link.url | relative_url }}"{% if active %} aria-current="page"{% endif %}>{{ link.title }}</a>
+        {% endfor %}
+      </nav>
     </div>
+  </header>
 
-    {% include scripts.html %}
+  <div class="wrap layout">
+    <aside class="profile" aria-label="Profile">
+      <img class="profile__photo" src="{{ site.author.avatar | relative_url }}" alt="Photo of {{ site.author.name }}" width="176" height="238" loading="lazy">
+      <p class="profile__name">{{ site.author.name }}</p>
+      <p class="profile__meta">{{ site.author.affiliation }}<br>{{ site.author.location }}</p>
+      <p class="profile__meta"><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+      <ul class="profile__links">
+        {% for l in site.links %}<li><a href="{{ l.url }}" rel="me noopener">{{ l.name }}</a></li>{% endfor %}
+      </ul>
+    </aside>
 
-  </body>
+    <main class="content" id="content">
+      {% if page.title and page.hide_title != true %}<h1>{{ page.title }}</h1>{% endif %}
+      {{ content }}
+    </main>
+  </div>
+
+  <footer class="footer">
+    <div class="wrap">
+      &copy; {{ site.time | date: '%Y' }} {{ site.author.name }} · Last updated {{ site.time | date: '%-d %B %Y' }} ·
+      Dark, script-free design for a lighter footprint.
+    </div>
+  </footer>
+</body>
 </html>

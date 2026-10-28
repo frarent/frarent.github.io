@@ -1,0 +1,118 @@
+# =============================================================================
+# Curated lists for the Publications page (edit by hand).
+#   selected       : the most relevant refereed articles, shown first
+#   working_papers : papers under review / R&R (papers in preparation come from the project
+#                    drafts: scripts/current_work_sources.json -> _data/current_work.json)
+# The weekly update (scripts/update_site.py) checks OpenAlex and flags new articles and
+# working papers that look published in UPDATE_REPORT.md.
+# The `doi` field (bare, no https://doi.org/) is also how the update script
+# recognises a working paper that has since been published.
+# =============================================================================
+
+selected:
+  - authors: "Lupi, G. R., Rentocchini, F., Rizzo, U."
+    year: 2026
+    title: "Forever young? On the technological impact of green startups"
+    journal: "Technological Forecasting and Social Change"
+    volume: "233"
+    pages: "124840"
+    doi: "10.1016/j.techfore.2026.124840"
+
+  - authors: "Rizzo, U., Rentocchini, F., Seeber, M., Ramaciotti, L."
+    year: 2026
+    title: "Beyond the badge of honour: the effect of the academic excellence initiative on staff recruitment in Italy"
+    journal: "Oxford Economic Papers"
+    volume: "78(2)"
+    pages: "309–334"
+    doi: "10.1093/oep/gpaf032"
+
+  - authors: "Antonioli, D., Marzucchi, A., Rentocchini, F., Vannuccini, S."
+    year: 2024
+    title: "Robot adoption and product innovation"
+    journal: "Research Policy"
+    volume: "53(6)"
+    pages: "105002"
+    doi: "10.1016/j.respol.2024.105002"
+
+  - authors: "Consoli, D., Marin, G., Rentocchini, F., Vona, F."
+    year: 2023
+    title: "Routinization, within-occupation task changes and long-run employment dynamics"
+    journal: "Research Policy"
+    volume: "52(1)"
+    pages: "104658"
+    doi: "10.1016/j.respol.2022.104658"
+
+  - authors: "Cicerone, G., Faggian, A., Montresor, S., Rentocchini, F."
+    year: 2023
+    title: "Regional artificial intelligence and the geography of environmental technologies: does local AI knowledge help regional green-tech specialization?"
+    journal: "Regional Studies"
+    volume: "57(2)"
+    pages: "330–343"
+    doi: "10.1080/00343404.2022.2092610"
+
+  - authors: "Clò, S., Florio, M., Rentocchini, F."
+    year: 2020
+    title: "Firm ownership, quality of government and innovation: evidence from patenting in the telecommunication industry"
+    journal: "Research Policy"
+    volume: "49(5)"
+    pages: "103960"
+    doi: "10.1016/j.respol.2020.103960"
+
+  - authors: "D'Este, P., Llopis, O., Rentocchini, F., Yegros, A."
+    year: 2019
+    title: "The relationship between interdisciplinarity and distinct modes of university-industry interaction"
+    journal: "Research Policy"
+    volume: "48(9)"
+    pages: "103799"
+    doi: "10.1016/j.respol.2019.05.008"
+
+  - authors: "Demirel, P., Li, Q. C., Rentocchini, F., Tamvada, J. P."
+    year: 2019
+    title: "Born to be green: new insights into the economics and management of green entrepreneurship"
+    journal: "Small Business Economics"
+    volume: "52(4)"
+    pages: "759–771"
+    doi: "10.1007/s11187-017-9933-z"
+
+  - authors: "Iorio, R., Labory, S., Rentocchini, F."
+    year: 2017
+    title: "The importance of pro-social behaviour for the breadth and depth of knowledge transfer activities: an analysis of Italian academic scientists"
+    journal: "Research Policy"
+    volume: "46(2)"
+    pages: "497–509"
+    doi: "10.1016/j.respol.2016.12.003"
+
+  - authors: "Consoli, D., Rentocchini, F."
+    year: 2015
+    title: "A taxonomy of multi-industry labour force skills"
+    journal: "Research Policy"
+    volume: "44(5)"
+    pages: "1116–1132"
+    doi: "10.1016/j.respol.2014.12.005"
+
+  - authors: "Rentocchini, F., D'Este, P., Manjarrés-Henríquez, L., Grimaldi, R."
+    year: 2014
+    title: "The relationship between academic consulting and research performance: evidence from five Spanish universities"
+    journal: "International Journal of Industrial Organization"
+    volume: "32"
+    pages: "70–83"
+    doi: "10.1016/j.ijindorg.2013.11.001"
+
+working_papers:
+  - authors: "Santoleri, P., Rentocchini, F., Lelli, F."
+    title: "LLM-assisted proposal writing in competitive R&D funding: evidence from Horizon Europe"
+    status: "under review"
+    url: "https://publications.jrc.ec.europa.eu/repository/handle/JRC146131"
+    doi: ""
+
+  - authors: "Amaral, S., Czarnitzki, D., Domnick, C., Napolitano, L., Rentocchini, F."
+    title: "Financial constraints for innovation in European SMEs: the mitigating role of intellectual property rights"
+    status: "revise and resubmit"
+    url: ""
+    doi: ""
+
+  - authors: "Cicerone, G., Losacker, S., Montresor, S., Rentocchini, F."
+    title: "Does environmental innovation scale up with urbanisation? Evidence from functional urban areas across OECD countries"
+    status: "under review"
+    url: ""
+    doi: ""
