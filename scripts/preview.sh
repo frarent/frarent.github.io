@@ -7,8 +7,13 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-# 1. Use Homebrew Ruby 3.3 (macOS system Ruby is too old for GitHub Pages' Jekyll)
-export PATH="/opt/homebrew/opt/ruby@3.3/bin:$PATH"
+# 1. Ruby >= 3 is needed (the macOS system Ruby is too old): prefer a Homebrew Ruby if one is installed
+if command -v brew >/dev/null 2>&1; then
+  for keg in ruby@3.3 ruby; do
+    d="$(brew --prefix "$keg" 2>/dev/null)/bin"
+    if [ -x "$d/ruby" ]; then export PATH="$d:$PATH"; break; fi
+  done
+fi
 
 # 2. Install gems on first run (into vendor/bundle, ignored by git)
 bundle config set --local path vendor/bundle >/dev/null
