@@ -21,6 +21,7 @@ Then: scripts/preview.sh  →  check  →  scripts/publish.sh   (or scripts/site
 
 import hashlib
 import json
+import mimetypes
 import os
 import re
 import shutil
@@ -73,6 +74,7 @@ NOT_PAPER_PROJECTS = set(CW.get("skip_projects", []))   # folders that never hol
 
 # Notifications (--weekly): Telegram bot if configured, otherwise a macOS desktop notification.
 TELEGRAM = CFG.get("telegram", {})                     # {"bot_token_file": ..., "chat_id": ...}
+PREVIEW_URL = CFG.get("preview", {}).get("url")        # private link to the preview built by site_action.py
 
 
 # =============================================================================
@@ -455,7 +457,19 @@ def main():
 # =============================================================================
 # 5. Notification (--weekly)
 # =============================================================================
-def summary_message(ev):
+def build_preview():
+    """Build the preview with site_action.py; returns the link line for the message, or a warning."""
+    if not CFG.get("preview", {}).get("output_dir"):
+        return ""
+    r = subprocess.run([sys.executable, "-I", str(SITE / "scripts" / "site_action.py"), "preview"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        print(r.stderr, file=sys.stderr)
+        return "Preview build failed — see the log."
+    return f"Preview before publishing: {PREVIEW_URL}" if PREVIEW_URL else ""
+
+
+def summary_message(ev, preview_line=""):
     """Plain-text summary: what goes online on approval, what needs a decision, how to reply."""
     lines = [f"Website update ready ({ev['date']})", ""]
     auto = ([ev["cv"]] if ev["cv"] else []) + [f"Current work changed: {t}" for t in ev["cw_changed"]]
@@ -468,8 +482,10 @@ def summary_message(ev):
              for n in ev["new_drafts"]]
     if sugg:
         lines += ["Suggestions (your decision):"] + sugg + [""]
+    if preview_line:
+        lines += [preview_line, ""]
     lines += ["Reply with: publish website · add W… (adds an article to Selected) · discard website update",
-              "Full report attached."]
+              "Attached: the full report" + (" and the new CV." if ev["cv"] else ".")]
     return "\n".join(lines)
 
 
@@ -483,7 +499,7 @@ def telegram(method, fields, document=None):
         parts = [f'--{b}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n'.encode()
                  for k, v in fields.items()]
         parts.append(f'--{b}\r\nContent-Disposition: form-data; name="document"; filename="{document.name}"\r\n'
-                     f'Content-Type: text/markdown\r\n\r\n'.encode() + document.read_bytes() + b"\r\n")
+                     f'Content-Type: {mimetypes.guess_type(document.name)[0] or "text/plain"}\r\n\r\n'.encode() + document.read_bytes() + b"\r\n")
         body, ctype = b"".join(parts) + f"--{b}--\r\n".encode(), f"multipart/form-data; boundary={b}"
     req = urllib.request.Request(f"https://api.telegram.org/bot{token}/{method}", data=body,
                                  headers={"Content-Type": ctype})
@@ -496,11 +512,14 @@ def notify(ev):
     if not (ev["cv"] or ev["cw_changed"] or ev["new_arts"] or ev["published_wps"] or ev["new_drafts"]):
         print("Nothing new to approve — no notification sent.")
         return
-    text = summary_message(ev)
+    text = summary_message(ev, build_preview())
     if TELEGRAM.get("chat_id") and TELEGRAM.get("bot_token_file"):
         try:
             telegram("sendMessage", {"chat_id": TELEGRAM["chat_id"], "text": text[:4000]})
             telegram("sendDocument", {"chat_id": TELEGRAM["chat_id"]}, document=REPORT)
+            if ev["cv"]:
+                telegram("sendDocument", {"chat_id": TELEGRAM["chat_id"], "caption": "New CV (not online yet)"},
+                         document=CV_TARGET)
             print("Telegram notification sent.")
             return
         except Exception as e:                            # fall through to the desktop notification

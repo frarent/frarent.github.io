@@ -3,8 +3,10 @@
 site_action.py — act on a weekly update without a terminal (e.g. from a chat bot).
 
   status         what is waiting to be published
+  preview        build the site as it would go online into a local folder (served as a private
+                 preview link; see "preview" in the config)
   add W1234567   add an OpenAlex article (id from UPDATE_REPORT.md) to Selected publications;
-                 if it is listed under Working papers, it is removed from there
+                 if it is listed under Working papers, it is removed from there; rebuilds the preview
   publish        commit everything waiting and push it online (master branch only)
   discard        drop the waiting changes to generated files (restores the published version)
 
@@ -13,6 +15,7 @@ Same effect as scripts/publish.sh, but non-interactive: whoever calls it has alr
 """
 
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -29,6 +32,14 @@ OPENALEX = SITE / "_data" / "openalex.json"
 GENERATED = ["_data/openalex.json", "_data/cv.json", "_data/current_work.json", "files"]
 GIT = shutil.which("git") or "/usr/bin/git"   # schedulers and bots often run with a minimal PATH
 BRANCH = "master"                               # the branch GitHub Pages builds from
+
+# Preview: where the built site goes and the link under which it is served (both optional, in the local config).
+CONFIG_FILE = Path(os.environ.get("SITE_UPDATE_CONFIG",
+                                  Path.home() / ".config" / "site-update" / "config.json")).expanduser()
+CFG = json.loads(CONFIG_FILE.read_text(encoding="utf-8")) if CONFIG_FILE.exists() else {}
+PREVIEW = CFG.get("preview", {})                 # {"output_dir": ..., "url": ...}
+RUBY_DIRS = ["/opt/homebrew/opt/ruby@3.3/bin", "/opt/homebrew/opt/ruby/bin",   # Ruby >= 3 (Homebrew)
+             "/usr/local/opt/ruby@3.3/bin", "/usr/local/opt/ruby/bin"]
 
 
 def git(*args, check=True):
@@ -53,6 +64,21 @@ def status():
     print("Waiting to be published:")
     for line in changes.splitlines():
         print("  " + line[3:])
+
+
+# =============================================================================
+# 1b. preview — build the working copy into the preview folder
+# =============================================================================
+def preview():
+    if not PREVIEW.get("output_dir"):
+        sys.exit("No preview settings in the config — use scripts/preview.sh instead.")
+    out = Path(PREVIEW["output_dir"]).expanduser()
+    env = dict(os.environ)
+    env["PATH"] = ":".join([d for d in RUBY_DIRS if Path(d).is_dir()] + [env.get("PATH", "/usr/bin:/bin")])
+    r = subprocess.run(["bundle", "exec", "jekyll", "build", "--quiet", "--baseurl", "", "-d", str(out)], cwd=SITE, env=env, capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"Preview build failed:\n{(r.stderr or r.stdout).strip()[-1500:]}")
+    print(f"Preview (not online yet): {PREVIEW.get('url') or out}")
 
 
 # =============================================================================
@@ -108,6 +134,8 @@ def add(work_id):
                        encoding="utf-8")
     print(f"Added to Selected publications: {a['title']} — {a['journal']} {a['year']}"
           + (" (removed from Working papers)" if moved else "") + ".\nNot online yet: run publish to put it online.")
+    if PREVIEW.get("output_dir"):
+        preview()
 
 
 # =============================================================================
@@ -141,6 +169,8 @@ if __name__ == "__main__":
     cmd = sys.argv[1] if len(sys.argv) > 1 else ""
     if cmd == "status":
         status()
+    elif cmd == "preview":
+        preview()
     elif cmd == "add" and len(sys.argv) == 3:
         add(sys.argv[2].strip().upper())
     elif cmd == "publish":
