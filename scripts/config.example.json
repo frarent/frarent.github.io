@@ -2,10 +2,14 @@
  "_readme": "Copy to ~/.config/site-update/config.json (or set $SITE_UPDATE_CONFIG) and fill in. Keep it out of the repository.",
  "author_surname": "Surname",
  "openalex": {
-  "author_ids": ["A0000000000"],
+  "author_ids": [
+   "A0000000000"
+  ],
   "extra_work_ids": [],
   "exclude_work_ids": [],
-  "journal_fixes": {"Wrong journal name in OpenAlex": "Correct name"},
+  "journal_fixes": {
+   "Wrong journal name in OpenAlex": "Correct name"
+  },
   "api_key_file": "~/.config/openalex/api_key",
   "min_works": 1
  },
@@ -16,14 +20,53 @@
  },
  "current_work": {
   "projects_root": "~/path/to/projects",
-  "name_fixes": {"Name as spelled in a draft": "Correct spelling"},
-  "skip_projects": ["folders-that-never-hold-papers"],
+  "name_fixes": {
+   "Name as spelled in a draft": "Correct spelling"
+  },
+  "skip_projects": [
+   "folders-that-never-hold-papers"
+  ],
   "projects": [
-   {"project": "paper_folder", "include": true, "drafts": ["writing/main*.tex"]},
-   {"project": "paper_with_markdown_draft", "include": true, "drafts": ["writing/paper*.md"]},
-   {"project": "draft_without_my_name_yet", "include": true, "drafts": ["writing/MASTER.tex"], "authors_add": ["First Surname"]},
-   {"project": "fixed_entry", "include": true, "title": "Paper title", "authors": "A. Author, B. Author"},
-   {"project": "not_on_the_website", "include": false, "note": "why it is excluded"}
+   {
+    "project": "paper_folder",
+    "include": true,
+    "drafts": [
+     "writing/main*.tex"
+    ]
+   },
+   {
+    "project": "paper_with_markdown_draft",
+    "include": true,
+    "drafts": [
+     "writing/paper*.md"
+    ]
+   },
+   {
+    "project": "draft_without_my_name_yet",
+    "include": true,
+    "drafts": [
+     "writing/MASTER.tex"
+    ],
+    "authors_add": [
+     "First Surname"
+    ]
+   },
+   {
+    "project": "fixed_entry",
+    "include": true,
+    "title": "Paper title",
+    "authors": "A. Author, B. Author"
+   },
+   {
+    "project": "not_on_the_website",
+    "include": false,
+    "note": "why it is excluded"
+   }
   ]
+ },
+ "telegram": {
+  "_note": "optional: weekly notification via a Telegram bot (falls back to a macOS notification)",
+  "bot_token_file": "~/.config/telegram/bot_token",
+  "chat_id": "123456789"
  }
 }

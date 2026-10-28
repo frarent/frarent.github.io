@@ -15,8 +15,8 @@ All personal settings (author IDs, CV location, project folders) are read from a
 local JSON config outside the repository: ~/.config/site-update/config.json, or the
 path in $SITE_UPDATE_CONFIG. See scripts/config.example.json for its structure.
 
-Run:  python3 scripts/update_site.py            (from anywhere; --weekly adds a desktop notification)
-Then: scripts/preview.sh  →  check  →  scripts/publish.sh
+Run:  python3 scripts/update_site.py            (from anywhere; --weekly also notifies, see section 5)
+Then: scripts/preview.sh  →  check  →  scripts/publish.sh   (or scripts/site_action.py from a chat bot)
 """
 
 import hashlib
@@ -28,6 +28,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.parse
+import uuid
 import urllib.request
 from datetime import date
 from pathlib import Path
@@ -69,6 +70,9 @@ CV_META = SITE / "_data" / "cv.json"
 CW = CFG.get("current_work", {})
 CW_JSON = SITE / "_data" / "current_work.json"
 NOT_PAPER_PROJECTS = set(CW.get("skip_projects", []))   # folders that never hold a paper draft
+
+# Notifications (--weekly): Telegram bot if configured, otherwise a macOS desktop notification.
+TELEGRAM = CFG.get("telegram", {})                     # {"bot_token_file": ..., "chat_id": ...}
 
 
 # =============================================================================
@@ -370,7 +374,7 @@ def build_current_work():
                        "status": e.get("status", "in preparation"),
                        "draft": str(path.relative_to(root)) if path else "manual entry"})
     new = unlisted_drafts(root, {e["project"] for e in cfg["projects"]})
-    notes += [f"NEW draft not yet classified: {d} — add it to scripts/current_work_sources.json" for d in new]
+    notes += [f"NEW draft not yet classified: {d} — add the project to the config" for d in new]
     return {"updated": date.today().isoformat(), "papers": papers}, notes
 
 
@@ -387,6 +391,7 @@ def curated_titles_and_dois():
 
 
 def main():
+    prev_report = REPORT.read_text(encoding="utf-8") if REPORT.exists() else ""
     old = json.loads(OUT_JSON.read_text()) if OUT_JSON.exists() else {"articles": [], "metrics": {}}
     data, rejected = build_publications()
     OUT_JSON.write_text(json.dumps(data, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
@@ -434,17 +439,74 @@ def main():
     REPORT.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 
+    # Events for the notification: only what is new since the previous report counts,
+    # so a pending suggestion is announced once, not every week.
+    old_t = {(p["title"], p["authors"]) for p in old_cw["papers"]}
+    return {
+        "date": data["updated"],
+        "cv": cv_msg if cv_msg.startswith("CV updated") else "",
+        "cw_changed": [p["title"] for p in (cw or {}).get("papers", []) if (p["title"], p["authors"]) not in old_t],
+        "new_arts": [a for a in new_arts if a["title"] not in prev_report],
+        "published_wps": [(t, a) for t, a in published_wps if f"{t} →" not in prev_report],
+        "new_drafts": [n for n in cw_notes if n.startswith("NEW draft") and n not in prev_report],
+    }
 
-def notify_if_changed():
-    """--weekly: desktop notification (macOS) when the working copy changed. Never commits."""
-    changed = subprocess.run(["git", "status", "--porcelain", "--", "_data/openalex.json", "_data/cv.json",
-                              "_data/current_work.json", str(CV_TARGET.relative_to(SITE))],
-                             cwd=SITE, capture_output=True, text=True).stdout.strip()
-    if changed and shutil.which("osascript"):          # macOS only; elsewhere read UPDATE_REPORT.md
-        rep = REPORT.read_text(encoding="utf-8")
-        msg = ("New publication(s) found on OpenAlex" if "## New journal articles" in rep else
-               "New paper draft found" if "NEW draft" in rep else "Website data refreshed")
-        subprocess.run(["osascript", "-e", f'display notification "{msg} — see UPDATE_REPORT.md, then run preview.sh" '
+
+# =============================================================================
+# 5. Notification (--weekly)
+# =============================================================================
+def summary_message(ev):
+    """Plain-text summary: what goes online on approval, what needs a decision, how to reply."""
+    lines = [f"Website update ready ({ev['date']})", ""]
+    auto = ([ev["cv"]] if ev["cv"] else []) + [f"Current work changed: {t}" for t in ev["cw_changed"]]
+    if auto:
+        lines += ["Goes online if you approve:"] + [f"• {x}" for x in auto] + [""]
+    sugg = [f"• New article: {a['title']} — {a['journal']} {a['year']}  → add {a['id']}" for a in ev["new_arts"]]
+    sugg += [f"• Working paper now published: {t} — {a['journal']} {a['year']}  → add {a['id']}"
+             for t, a in ev["published_wps"]]
+    sugg += [f"• {n.replace('NEW draft not yet classified', 'New draft (not shown on the site)')}"
+             for n in ev["new_drafts"]]
+    if sugg:
+        lines += ["Suggestions (your decision):"] + sugg + [""]
+    lines += ["Reply with: publish website · add W… (adds an article to Selected) · discard website update",
+              "Full report attached."]
+    return "\n".join(lines)
+
+
+def telegram(method, fields, document=None):
+    """Call the Telegram Bot API (sending only; a document is uploaded as multipart/form-data)."""
+    token = Path(TELEGRAM["bot_token_file"]).expanduser().read_text().strip()
+    if document is None:
+        body, ctype = urllib.parse.urlencode(fields).encode(), "application/x-www-form-urlencoded"
+    else:
+        b = uuid.uuid4().hex
+        parts = [f'--{b}\r\nContent-Disposition: form-data; name="{k}"\r\n\r\n{v}\r\n'.encode()
+                 for k, v in fields.items()]
+        parts.append(f'--{b}\r\nContent-Disposition: form-data; name="document"; filename="{document.name}"\r\n'
+                     f'Content-Type: text/markdown\r\n\r\n'.encode() + document.read_bytes() + b"\r\n")
+        body, ctype = b"".join(parts) + f"--{b}--\r\n".encode(), f"multipart/form-data; boundary={b}"
+    req = urllib.request.Request(f"https://api.telegram.org/bot{token}/{method}", data=body,
+                                 headers={"Content-Type": ctype})
+    with urllib.request.urlopen(req, timeout=60) as r:
+        return json.load(r)
+
+
+def notify(ev):
+    """Notify only when there is something to approve or decide (moving citation counts alone don't count)."""
+    if not (ev["cv"] or ev["cw_changed"] or ev["new_arts"] or ev["published_wps"] or ev["new_drafts"]):
+        print("Nothing new to approve — no notification sent.")
+        return
+    text = summary_message(ev)
+    if TELEGRAM.get("chat_id") and TELEGRAM.get("bot_token_file"):
+        try:
+            telegram("sendMessage", {"chat_id": TELEGRAM["chat_id"], "text": text[:4000]})
+            telegram("sendDocument", {"chat_id": TELEGRAM["chat_id"]}, document=REPORT)
+            print("Telegram notification sent.")
+            return
+        except Exception as e:                            # fall through to the desktop notification
+            print(f"Telegram notification failed: {e}", file=sys.stderr)
+    if shutil.which("osascript"):                         # macOS only; elsewhere read UPDATE_REPORT.md
+        subprocess.run(["osascript", "-e", f'display notification "{text.splitlines()[0]} — see UPDATE_REPORT.md" '
                                            f'with title "{SITE.name}"'])
 
 
@@ -452,6 +514,6 @@ if __name__ == "__main__":
     if not CFG:
         sys.exit(f"No config found at {CONFIG_FILE} — copy scripts/config.example.json there and fill it in.")
     print(f"== {date.today()} website update")
-    main()
+    events = main()
     if "--weekly" in sys.argv:
-        notify_if_changed()
+        notify(events)
