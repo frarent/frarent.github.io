@@ -30,7 +30,8 @@ scripts/publish.sh               # shows the changes, asks for confirmation, com
 
 Without a terminal (for example from a chat bot), `scripts/site_action.py` does the same steps
 non-interactively: `status`, `add <OpenAlex id>` (adds an article to Selected publications and
-removes it from Working papers if listed there), `publish` and `discard`.
+removes it from Working papers if listed there), `preview` (builds the site into a local folder
+set in the config, which can be served as a private preview link), `publish` and `discard`.
 
 `update_site.py` does three things:
 
@@ -42,8 +43,8 @@ removes it from Working papers if listed there), `publish` and `discard`.
 
 With `--weekly` it also sends a notification when there is something to approve or decide: a new
 CV, changed current work, a new article, a working paper that looks published, or a new draft.
-The notification goes to a Telegram bot if one is configured (a summary plus `UPDATE_REPORT.md`
-as an attachment), otherwise to the macOS notification centre.
+The notification goes to a Telegram bot if one is configured (a summary, the preview link,
+`UPDATE_REPORT.md` and the new CV when it changed), otherwise to the macOS notification centre.
 
 All personal settings (author IDs, CV location, project folders and which projects to include) live
 in a local config file outside the repository: `~/.config/site-update/config.json`, or the path in
