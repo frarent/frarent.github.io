@@ -1,60 +1,55 @@
 {
- "updated": "2026-10-28",
+ "updated": "2026-11-12",
  "source": "OpenAlex",
  "metrics": {
-  "works": 101,
+  "works": 88,
   "n_articles": 36,
-  "citations": 2314,
-  "h_index": 24
+  "citations": 2529,
+  "h_index": 25
  },
  "citations_by_doi": {
-  "10.1007/s11187-017-9933-z": 389,
-  "10.1016/j.technovation.2011.12.005": 155,
-  "10.1016/j.respol.2016.12.003": 147,
-  "10.1080/13662716.2014.879252": 145,
-  "10.1080/00343404.2022.2092610": 143,
-  "10.1007/s11187-017-9939-6": 116,
-  "10.1016/j.respol.2019.05.008": 111,
-  "10.1111/radm.12347": 90,
-  "10.1016/j.respol.2020.103960": 71,
-  "10.1080/13662716.2022.2109455": 62,
-  "10.1093/icc/dtab041": 49,
-  "10.1016/j.respol.2024.105002": 46,
-  "10.1093/icc/dtx044": 41,
-  "10.1080/00472778.2021.1944635": 37,
-  "10.1016/j.ijindorg.2013.11.001": 46,
-  "10.1111/j.1540-627x.2012.00356.x": 39,
+  "10.1007/s11187-017-9933-z": 441,
+  "10.1080/00343404.2022.2092610": 164,
+  "10.1016/j.technovation.2011.12.005": 162,
+  "10.1080/13662716.2014.879252": 159,
+  "10.1016/j.respol.2016.12.003": 155,
+  "10.1007/s11187-017-9939-6": 127,
+  "10.1016/j.respol.2019.05.008": 120,
+  "10.1111/radm.12347": 99,
+  "10.1016/j.respol.2020.103960": 76,
+  "10.1080/13662716.2022.2109455": 73,
+  "10.1093/icc/dtab041": 66,
+  "10.1016/j.respol.2024.105002": 55,
+  "10.1016/j.ijindorg.2013.11.001": 53,
+  "10.1093/icc/dtx044": 51,
+  "10.1111/j.1540-627x.2012.00356.x": 43,
+  "10.1016/j.respol.2022.104658": 41,
+  "10.1080/00472778.2021.1944635": 40,
+  "10.1007/s40812-020-00159-6": 32,
+  "10.1080/03075079.2023.2184788": 13,
+  "10.1093/icc/dtw030": 34,
+  "10.1007/s11403-012-0087-4": 31,
+  "10.1016/j.respol.2016.04.010": 30,
   "10.1016/j.respol.2014.12.005": 28,
-  "10.1016/j.respol.2016.04.010": 27,
-  "10.1007/s40812-020-00159-6": 23,
-  "10.1016/j.infoecopol.2010.12.002": 14,
-  "10.1080/03075079.2023.2184788": 8,
   "10.1007/s40821-025-00301-1": 6,
-  "10.1007/s11403-012-0087-4": 28,
+  "10.1016/j.techfore.2013.04.018": 21,
   "10.1080/10438599.2012.656524": 20,
-  "10.1016/j.techfore.2013.04.018": 17,
+  "10.1016/j.infoecopol.2010.12.002": 17,
   "10.1016/j.drugpo.2012.03.003": 10,
-  "10.1007/978-3-030-84669-5_7": 5,
+  "10.1007/978-3-030-84669-5_7": 6,
+  "10.4018/jossp.2010070101": 9,
   "10.1016/j.scaman.2023.101261": 3,
-  "10.4018/jossp.2010070101": 7,
+  "10.1007/0-387-34226-5_41": 3,
+  "10.4000/rei.5212": 2,
   "10.69810/ekz.1276": 1,
-  "10.1080/13662716.2023.2254272": 98,
-  "10.2139/ssrn.1283573": 86,
-  "10.2139/ssrn.3414338": 7,
-  "10.2139/ssrn.2743131": 6,
-  "10.2139/ssrn.3625592": 6,
+  "10.1080/13662716.2023.2254272": 117,
+  "10.2139/ssrn.1283573": 91,
   "10.2139/ssrn.1837283": 5,
-  "10.2139/ssrn.1141714": 5,
-  "10.2139/ssrn.3667896": 3,
-  "10.2139/ssrn.1718546": 2,
-  "10.1007/0-387-34226-5_41": 2,
+  "10.2139/ssrn.2743111": 5,
+  "10.5465/ambpp.2016.146": 3,
   "10.2139/ssrn.2850425": 2,
-  "10.5465/ambpp.2016.146": 2,
   "10.13140/rg.2.2.36771.96809": 2,
   "10.2139/ssrn.1546925": 2,
-  "10.2139/ssrn.1599468": 1,
-  "10.2139/ssrn.1141782": 1,
-  "10.4000/rei.5212": 1,
   "10.6092/unibo/amsdottorato/501": 0,
   "10.6092/unibo/amsacta/4548": 0,
   "10.5465/ambpp.2014.12883abstract": 0,
@@ -62,18 +57,14 @@
   "10.5465/ambpp.2016.13900abstract": 0,
   "10.5465/ambpp.2020.14211abstract": 0,
   "10.2139/ssrn.1892786": 0,
+  "10.2139/ssrn.4280409": 0,
   "10.2139/ssrn.1140783": 0,
   "10.2139/ssrn.1680866": 0,
   "10.2139/ssrn.4439508": 0,
   "10.1080/10438599.2025.2442244": 0,
-  "10.2139/ssrn.5549112": 0,
   "10.1093/oep/gpaf032": 0,
   "10.1177/09697764261457099": 0,
-  "10.1016/j.techfore.2026.124840": 0,
-  "10.1016/j.respol.2022.104658": 40,
-  "10.1093/icc/dtw030": 31,
-  "10.2139/ssrn.2743111": 5,
-  "10.2139/ssrn.4280409": 0
+  "10.1016/j.techfore.2026.124840": 0
  },
  "articles": [
   {
@@ -129,7 +120,7 @@
    "volume": "53(6)",
    "pages": "105002",
    "doi": "10.1016/j.respol.2024.105002",
-   "citations": 46
+   "citations": 55
   },
   {
    "id": "W4316505354",
@@ -151,7 +142,7 @@
    "volume": "30(7)",
    "pages": "755–765",
    "doi": "10.1080/13662716.2023.2254272",
-   "citations": 98
+   "citations": 117
   },
   {
    "id": "W4323359486",
@@ -162,7 +153,7 @@
    "volume": "48(5)",
    "pages": "747–757",
    "doi": "10.1080/03075079.2023.2184788",
-   "citations": 8
+   "citations": 13
   },
   {
    "id": "W4290721559",
@@ -173,7 +164,7 @@
    "volume": "57(2)",
    "pages": "330–343",
    "doi": "10.1080/00343404.2022.2092610",
-   "citations": 143
+   "citations": 164
   },
   {
    "id": "W2972358271",
@@ -184,18 +175,7 @@
    "volume": "52(1)",
    "pages": "104658",
    "doi": "10.1016/j.respol.2022.104658",
-   "citations": 40
-  },
-  {
-   "id": "W4294796016",
-   "title": "The wealth of (Open Data) nations? Open government data, country-level institutions and entrepreneurial activity",
-   "authors": "Franz Huber, Alan Ponce, Francesco Rentocchini, Thomas Wainwright",
-   "year": 2022,
-   "journal": "Industry and Innovation",
-   "volume": "29(8)",
-   "pages": "992–1023",
-   "doi": "10.1080/13662716.2022.2109455",
-   "citations": 62
+   "citations": 41
   },
   {
    "id": "W3200687333",
@@ -206,7 +186,7 @@
    "volume": "61(6)",
    "pages": "2849–2878",
    "doi": "10.1080/00472778.2021.1944635",
-   "citations": 37
+   "citations": 40
   },
   {
    "id": "W3187626535",
@@ -217,7 +197,7 @@
    "volume": "31(1)",
    "pages": "112–136",
    "doi": "10.1093/icc/dtab041",
-   "citations": 49
+   "citations": 66
   },
   {
    "id": "W3015285384",
@@ -228,18 +208,18 @@
    "volume": "49(5)",
    "pages": "103960",
    "doi": "10.1016/j.respol.2020.103960",
-   "citations": 71
+   "citations": 76
   },
   {
-   "id": "W3022427171",
-   "title": "The rush for patents in the Fourth Industrial Revolution",
-   "authors": "Mario Benassi, Elena Grinza, Francesco Rentocchini",
+   "id": "W4294796016",
+   "title": "The Wealth of (Open Data) Nations? Examining the Interplay of Open Government Data and Country-level Institutions for Entrepreneurial Activity at the Country-level",
+   "authors": "Franz Huber, Alan Ponce, Francesco Rentocchini, Thomas Wainwright",
    "year": 2020,
-   "journal": "Journal of Industrial and Business Economics",
-   "volume": "47(4)",
-   "pages": "559–588",
-   "doi": "10.1007/s40812-020-00159-6",
-   "citations": 23
+   "journal": "Industry and Innovation",
+   "volume": "29(8)",
+   "pages": "992–1023",
+   "doi": "10.1080/13662716.2022.2109455",
+   "citations": 73
   },
   {
    "id": "W2947863870",
@@ -250,7 +230,18 @@
    "volume": "48(9)",
    "pages": "103799",
    "doi": "10.1016/j.respol.2019.05.008",
-   "citations": 111
+   "citations": 120
+  },
+  {
+   "id": "W3022427171",
+   "title": "The Rush for Patents in the Fourth Industrial Revolution: An Exploration of Patenting Activity at the European Patent Office",
+   "authors": "Mario Benassi, Elena Grinza, Francesco Rentocchini",
+   "year": 2019,
+   "journal": "Journal of Industrial and Business Economics",
+   "volume": "47(4)",
+   "pages": "559–588",
+   "doi": "10.1007/s40812-020-00159-6",
+   "citations": 32
   },
   {
    "id": "W2901348326",
@@ -261,7 +252,7 @@
    "volume": "50(1)",
    "pages": "31–46",
    "doi": "10.1111/radm.12347",
-   "citations": 90
+   "citations": 99
   },
   {
    "id": "W2789819847",
@@ -283,7 +274,7 @@
    "volume": "52(4)",
    "pages": "759–771",
    "doi": "10.1007/s11187-017-9933-z",
-   "citations": 389
+   "citations": 441
   },
   {
    "id": "W2727599045",
@@ -294,7 +285,7 @@
    "volume": "27(3)",
    "pages": "525–553",
    "doi": "10.1093/icc/dtx044",
-   "citations": 41
+   "citations": 51
   },
   {
    "id": "W2578809926",
@@ -305,7 +296,7 @@
    "volume": "46(2)",
    "pages": "497–509",
    "doi": "10.1016/j.respol.2016.12.003",
-   "citations": 147
+   "citations": 155
   },
   {
    "id": "W2765294902",
@@ -316,7 +307,7 @@
    "volume": "52(4)",
    "pages": "891–904",
    "doi": "10.1007/s11187-017-9939-6",
-   "citations": 116
+   "citations": 127
   },
   {
    "id": "W2397191519",
@@ -327,7 +318,7 @@
    "volume": "45(8)",
    "pages": "1649–1659",
    "doi": "10.1016/j.respol.2016.04.010",
-   "citations": 27
+   "citations": 30
   },
   {
    "id": "W2146789675",
@@ -338,7 +329,7 @@
    "volume": "25(5)",
    "pages": "847–866",
    "doi": "10.1093/icc/dtw030",
-   "citations": 31
+   "citations": 34
   },
   {
    "id": "W2157861159",
@@ -360,7 +351,7 @@
    "volume": "21(1)",
    "pages": "1–19",
    "doi": "10.1080/13662716.2014.879252",
-   "citations": 145
+   "citations": 159
   },
   {
    "id": "W2085481586",
@@ -371,7 +362,7 @@
    "volume": "32",
    "pages": "70–83",
    "doi": "10.1016/j.ijindorg.2013.11.001",
-   "citations": 46
+   "citations": 53
   },
   {
    "id": "W2054659540",
@@ -382,7 +373,7 @@
    "volume": "80(8)",
    "pages": "1535–1545",
    "doi": "10.1016/j.techfore.2013.04.018",
-   "citations": 17
+   "citations": 21
   },
   {
    "id": "W2021303369",
@@ -393,7 +384,7 @@
    "volume": "7(2)",
    "pages": "145–165",
    "doi": "10.1007/s11403-012-0087-4",
-   "citations": 28
+   "citations": 31
   },
   {
    "id": "W2103656638",
@@ -404,7 +395,7 @@
    "volume": "50(2)",
    "pages": "340–364",
    "doi": "10.1111/j.1540-627x.2012.00356.x",
-   "citations": 39
+   "citations": 43
   },
   {
    "id": "W2017882292",
@@ -437,7 +428,7 @@
    "volume": "136",
    "pages": "141–168",
    "doi": "10.4000/rei.5212",
-   "citations": 1
+   "citations": 2
   },
   {
    "id": "W3124159681",
@@ -448,7 +439,7 @@
    "volume": "32(5)",
    "pages": "293–303",
    "doi": "10.1016/j.technovation.2011.12.005",
-   "citations": 155
+   "citations": 162
   },
   {
    "id": "W3123605942",
@@ -459,7 +450,7 @@
    "volume": "23(1)",
    "pages": "141–157",
    "doi": "10.1016/j.infoecopol.2010.12.002",
-   "citations": 14
+   "citations": 17
   },
   {
    "id": "W3126109743",
@@ -470,7 +461,7 @@
    "volume": "2(3)",
    "pages": "1–29",
    "doi": "10.4018/jossp.2010070101",
-   "citations": 7
+   "citations": 9
   }
  ]
 }
