@@ -7,7 +7,9 @@ site_action.py — act on a weekly update without a terminal (e.g. from a chat b
                  preview link; see "preview" in the config)
   add W1234567   add an OpenAlex article (id from UPDATE_REPORT.md) to Selected publications;
                  if it is listed under Working papers, it is removed from there; rebuilds the preview
-  publish        commit everything waiting and push it online (master branch only)
+  publish --reply "<user's message>"
+                 commit everything waiting and push it online (master branch only); refuses
+                 unless the message clearly approves (e.g. "publish website", "ok")
   discard        drop the waiting changes to generated files (restores the published version)
 
 Run:  python3 scripts/site_action.py <command>
@@ -141,7 +143,24 @@ def add(work_id):
 # =============================================================================
 # 3. publish / discard
 # =============================================================================
-def publish():
+# Words that approve publishing, and words that make a reply a refusal or a doubt.
+# A reply publishes only if it has an approval word and none of the refusal words.
+APPROVE_WORDS = r"\b(publish|approve|approved|ok|okay|go ahead|yes)\b"
+REFUSE_WORDS = r"\b(no|not|don'?t|do not|never|keep|leave|skip|discard|wait|hold|stop|cancel|later)\b"
+
+
+def reply_approves(reply):
+    """True only for a reply that clearly approves publishing (e.g. 'publish website', 'ok')."""
+    text = reply.lower().replace("’", "'")
+    return bool(re.search(APPROVE_WORDS, text)) and not re.search(REFUSE_WORDS, text)
+
+
+def publish(reply):
+    # Gate: a chat bot must pass the user's message verbatim; anything that is not a clear
+    # approval publishes nothing (a bot once published on "do not add. keep as is").
+    if not reply_approves(reply):
+        sys.exit(f"Not published: the reply \"{reply}\" is not an approval. The update stays waiting.\n"
+                 "To put it online, reply exactly: publish website")
     if git("rev-parse", "--abbrev-ref", "HEAD") != BRANCH:
         sys.exit(f"The site repository is not on {BRANCH}: publish from a terminal with scripts/publish.sh.")
     if git("status", "--porcelain"):
@@ -173,8 +192,11 @@ if __name__ == "__main__":
         preview()
     elif cmd == "add" and len(sys.argv) == 3:
         add(sys.argv[2].strip().upper())
+    elif cmd == "publish" and len(sys.argv) == 4 and sys.argv[2] == "--reply":
+        publish(sys.argv[3])
     elif cmd == "publish":
-        publish()
+        sys.exit("publish needs the user's reply: site_action.py publish --reply \"<message, verbatim>\"\n"
+                 "(from a terminal, use scripts/publish.sh)")
     elif cmd == "discard":
         discard()
     else:

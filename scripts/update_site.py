@@ -484,7 +484,9 @@ def summary_message(ev, preview_line=""):
         lines += ["Suggestions (your decision):"] + sugg + [""]
     if preview_line:
         lines += [preview_line, ""]
-    lines += ["Reply with: publish website · add W… (adds an article to Selected) · discard website update",
+    lines += ["Nothing goes online unless you reply exactly: publish website",
+              "Other replies: add W… (adds an article to Selected) · discard website update · "
+              "no reply = nothing changes",
               "Attached: the full report" + (" and the new CV." if ev["cv"] else ".")]
     return "\n".join(lines)
 
