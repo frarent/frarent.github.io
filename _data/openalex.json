@@ -1,32 +1,32 @@
 {
- "updated": "2026-11-12",
+ "updated": "2026-11-16",
  "source": "OpenAlex",
  "metrics": {
   "works": 88,
   "n_articles": 36,
-  "citations": 2529,
+  "citations": 2532,
   "h_index": 25
  },
  "citations_by_doi": {
-  "10.1007/s11187-017-9933-z": 441,
+  "10.1007/s11187-017-9933-z": 442,
   "10.1080/00343404.2022.2092610": 164,
   "10.1016/j.technovation.2011.12.005": 162,
   "10.1080/13662716.2014.879252": 159,
   "10.1016/j.respol.2016.12.003": 155,
   "10.1007/s11187-017-9939-6": 127,
   "10.1016/j.respol.2019.05.008": 120,
-  "10.1111/radm.12347": 99,
+  "10.1111/radm.12347": 100,
   "10.1016/j.respol.2020.103960": 76,
   "10.1080/13662716.2022.2109455": 73,
   "10.1093/icc/dtab041": 66,
   "10.1016/j.respol.2024.105002": 55,
   "10.1016/j.ijindorg.2013.11.001": 53,
-  "10.1093/icc/dtx044": 51,
+  "10.1093/icc/dtx044": 52,
   "10.1111/j.1540-627x.2012.00356.x": 43,
   "10.1016/j.respol.2022.104658": 41,
   "10.1080/00472778.2021.1944635": 40,
   "10.1007/s40812-020-00159-6": 32,
-  "10.1080/03075079.2023.2184788": 13,
+  "10.1080/03075079.2023.2184788": 14,
   "10.1093/icc/dtw030": 34,
   "10.1007/s11403-012-0087-4": 31,
   "10.1016/j.respol.2016.04.010": 30,
@@ -39,9 +39,9 @@
   "10.1007/978-3-030-84669-5_7": 6,
   "10.4018/jossp.2010070101": 9,
   "10.1016/j.scaman.2023.101261": 3,
-  "10.1007/0-387-34226-5_41": 3,
   "10.4000/rei.5212": 2,
   "10.69810/ekz.1276": 1,
+  "10.1007/0-387-34226-5_41": 3,
   "10.1080/13662716.2023.2254272": 117,
   "10.2139/ssrn.1283573": 91,
   "10.2139/ssrn.1837283": 5,
@@ -153,7 +153,7 @@
    "volume": "48(5)",
    "pages": "747–757",
    "doi": "10.1080/03075079.2023.2184788",
-   "citations": 13
+   "citations": 14
   },
   {
    "id": "W4290721559",
@@ -252,7 +252,7 @@
    "volume": "50(1)",
    "pages": "31–46",
    "doi": "10.1111/radm.12347",
-   "citations": 99
+   "citations": 100
   },
   {
    "id": "W2789819847",
@@ -274,7 +274,7 @@
    "volume": "52(4)",
    "pages": "759–771",
    "doi": "10.1007/s11187-017-9933-z",
-   "citations": 441
+   "citations": 442
   },
   {
    "id": "W2727599045",
@@ -285,7 +285,7 @@
    "volume": "27(3)",
    "pages": "525–553",
    "doi": "10.1093/icc/dtx044",
-   "citations": 51
+   "citations": 52
   },
   {
    "id": "W2578809926",
@@ -388,7 +388,7 @@
   },
   {
    "id": "W2103656638",
-   "title": "Is Open Source Software about Innovation? Collaborations with the Open Source Community and Innovation Performance of Software Entrepreneurial Ventures",
+   "title": "Is Open Source Software about Innovation? Collaborations with the Open Source Community and Innovation Performance of Software Entrepreneurial Ventures: JOURNAL OF SMALL BUSINESS MANAGEMENT",
    "authors": "Evila Piva, Francesco Rentocchini, Cristina Rossi-Lamastra",
    "year": 2012,
    "journal": "Journal of Small Business Management",
@@ -454,7 +454,7 @@
   },
   {
    "id": "W3126109743",
-   "title": "An Analysis of the Adoption of Open Source Software by Local Public Administrations",
+   "title": "An Analysis of the Adoption of Open Source Software by Local Public Administrations: Evidence from the Emilia-Romagna Region of Italy",
    "authors": "Francesco Rentocchini, Dimitri Tartari",
    "year": 2010,
    "journal": "International Journal of Open Source Software and Processes",
